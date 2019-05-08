@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>算法和数据结构</title>
+      <link href="/2019/05/08/%E5%B0%8F%E7%81%B0%E6%BC%AB%E7%94%BB%E7%AE%97%E6%B3%95/1.%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/"/>
+      <url>/2019/05/08/%E5%B0%8F%E7%81%B0%E6%BC%AB%E7%94%BB%E7%AE%97%E6%B3%95/1.%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/</url>
+      
+        <content type="html"><![CDATA[<h5 id="算法（algorithm）"><a href="#算法（algorithm）" class="headerlink" title="算法（algorithm）"></a>算法（<code>algorithm</code>）</h5><p>定义：用于解决某一类问题的公式和思想</p><blockquote><p>高斯算法：通过等差数列求和</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; //算出 1+2+3+4+5+6+....+10000 的结果</span><br><span class="line">&gt; //首先把 1 到 10000 分为两组两两相加</span><br><span class="line">&gt; 1 + 10000 = 10001</span><br><span class="line">&gt; 2 + 9999 = 10001</span><br><span class="line">&gt; ....</span><br><span class="line">&gt; //算出共有 10000 / 2 = 5000 组</span><br><span class="line">&gt; （1 + 10000）* 5000 = 50005000</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p><strong>时间复杂度</strong>和<strong>空间复杂度</strong>是衡量算法的好坏的两个标准</p><p>算法应用领域：</p><ol><li>运算</li><li>查找</li><li>排序</li><li>最优决策</li></ol><h5 id="数据结构（-data-structure-）"><a href="#数据结构（-data-structure-）" class="headerlink" title="数据结构（ data structure ）"></a>数据结构（ <code>data structure</code> ）</h5><p>定义：数据的组织、管理和存储格式，目的是为了高效地访问和修改数据</p><p>数据结构的组成方式</p><ol><li><p>线性结构</p><p>最简单的数据结构，包括数组、链表以及一系列由它们衍生出来的栈、队列、哈希表</p></li><li><p>树</p><p>相对复杂的数据结构，具有代表性的是二叉树，由它衍生出二叉堆之类的数据结构</p></li><li><p>图</p></li><li><p>其他数据结构：跳表、哈希链表、位图</p></li></ol><h5 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h5><blockquote><p>渐进时间复杂度：若存在函数 <strong>f(n)</strong> ，使得当 n 趋近于无穷大的时候， <em>T(n) / f(n)</em> 的极限值为不等于 0 的常数，则称      <em>f(n)</em> 是 <em>T(n)</em> 的同数量级函数，记作 <em>T(n) = O(f(n))</em> ，称为 <em>O(f(n))</em> ， O 为算法的渐进时间复杂度，简称为时间复杂度</p></blockquote><p>时间复杂度就是把程序的相对执行时间函数 <em>T(n)</em> 简化为一个数量级，这个数量级可以是 n 、n^2^ 、n^3^ ……</p><blockquote><p>推导出时间复杂度的几个原则：</p><ol><li>如果运行时间是常量级的，则用常量1来表示</li><li>只保留时间函数中的最高阶</li><li>如果高阶项存在，则省去高阶项前面的系数</li></ol><blockquote><p>示例：</p><ol><li><p>假如一个面包长 n cm ，每 3min 可以吃掉 1cm ，那么吃掉整个面包需要 3n min ，则 <em>T(n) = 3n</em> </p><blockquote><p>此时执行次数是线性的</p><p>最高阶项为 3n ，省去系数，则转化后的时间复杂度为 ： <em>T(n)=n</em></p></blockquote></li><li><p>假如一个面包长 10 cm，每 5 分钟吃掉剩余长度的一般，即 5 min 吃掉 <em>n/2</em> ，10 min 吃掉<em>n/4</em>……那么要过多久面包才剩1cm 呢？</p><blockquote><p>数字 n 不断的除于 2 ，除几次的结果为 ： <em>5 * log~2~n</em></p><p>执行次数使用对数计算，最高阶项为 <em>5 * log~2~n</em>，省去系数，则转化后的时间复杂度为 ： <em>T(n)=log~2~n</em></p></blockquote></li><li><p>一个面包，假如每2分钟吃掉一个面包，那么吃掉整个面包的的时间就是 <em>T(n) = 2</em></p><blockquote><p>执行次数是常量，则转化后的时间复杂度为 ： <em>T(n)=1</em></p></blockquote></li><li><p>一个面包长度为n cm，吃掉第一个1cm需要1min，吃掉第二个1cm需要2min，吃掉第三个1cm需要3min……那么吃掉整个面包需要多久</p><blockquote><p>需要 1 + 2 + 3 + 4 + 5 …. + (n-1) + n = (1+n)*(n/2)，记作 ： <em>T(n) = 0.5n^2^+0.5n</em></p><p>执行次数是多项式计算的，最高阶项是 0.5n^2^ ,省去系数，则转化后的时间复杂度为 ： <em>T(n)=n^2^</em></p></blockquote></li></ol></blockquote></blockquote><p>时间复杂度的影响的例子：</p><p>算法 a 的执行次数为 100n ,时间复杂度为 <em>O(n)</em> ；算法 b 的执行次数为 5n^2^,时间复杂度为 <em>O(n^2^)</em> ，算法 a 运行在一台普通电脑上，算法b运行在某台超级计算机上，超级计算机的执行效率是普通电脑的 100 倍，随着输入规模 n 的增长，两种算法的运算速度为：</p><table><thead><tr><th></th><th style="text-align:center"><em>T(n) = 100n*100</em></th><th style="text-align:center"><em>T(n)=5n^2^</em></th></tr></thead><tbody><tr><td>n = 1</td><td style="text-align:center">10000</td><td style="text-align:center">5</td></tr><tr><td>n = 5</td><td style="text-align:center">50000</td><td style="text-align:center">125</td></tr><tr><td>n = 10</td><td style="text-align:center">100000</td><td style="text-align:center">500</td></tr><tr><td>n = 100</td><td style="text-align:center">1000000</td><td style="text-align:center">50000</td></tr><tr><td>n = 1000</td><td style="text-align:center">10000000</td><td style="text-align:center">5000000</td></tr><tr><td>n = 10000</td><td style="text-align:center">100000000</td><td style="text-align:center">500000000</td></tr><tr><td>n = 100000</td><td style="text-align:center">1000000000</td><td style="text-align:center">50000000000</td></tr><tr><td>n = 1000000</td><td style="text-align:center">10000000000</td><td style="text-align:center">5000000000000</td></tr></tbody></table><p>由表可看出，当 n 很小的时候， 算法a的用时远大于算法b，但是随着n值越来越大的时候，算法a的优势已经显示出来</p><h5 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h5>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小灰漫画算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 时间复杂度 </tag>
+            
+            <tag> 空间复杂度 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何把 Activity 实例放到一个泛型为 String 的 ArrayList 中去</title>
+      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Q%EF%BC%9A%E5%A6%82%E4%BD%95%E6%8A%8A%20Activity%20%E6%94%BE%E5%88%B0%20ListString%20mList%20=%20new%20ArrayList();%20%E4%B8%AD%E5%8E%BB/"/>
+      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Q%EF%BC%9A%E5%A6%82%E4%BD%95%E6%8A%8A%20Activity%20%E6%94%BE%E5%88%B0%20ListString%20mList%20=%20new%20ArrayList();%20%E4%B8%AD%E5%8E%BB/</url>
+      
+        <content type="html"><![CDATA[<p>Q：如何把 <code>Activity</code> 实例放到一个泛型为 <code>String</code> 的 <code>ArrayList</code> 中去</p><blockquote><p>这一个题目考察的是泛型擦除的概念</p></blockquote><p>方法一：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用反射的方式</span></span><br><span class="line"><span class="keyword">private</span> List&lt;String&gt; strList;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">putActivity2List</span><span class="params">()</span> </span>&#123;</span><br><span class="line">strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">strList.add(<span class="string">"你好"</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//获取所有不包括基类的成员变量</span></span><br><span class="line">Field strField = getClass().getDeclaredField(<span class="string">"strList"</span>);</span><br><span class="line">strField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">List list = (List) strField.get(<span class="keyword">this</span>);<span class="comment">//通过反射拿到 strList</span></span><br><span class="line">list.add(<span class="keyword">this</span>);</span><br><span class="line">Log.d(TAG, <span class="string">"onCreate: "</span> + list.size());</span><br><span class="line">&#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">Log.d(TAG, <span class="string">"onCreate: strList.size = "</span> + strList.size());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>方法二：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">List&lt;Activity&gt; acList = strList;</span><br><span class="line">acList.add(activity);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面试题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> 面试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Android 优化布局的几种方法</title>
+      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h4 id="优化布局的方法"><a href="#优化布局的方法" class="headerlink" title="优化布局的方法"></a>优化布局的方法</h4><ol><li>优化布局<ul><li>减少布局嵌套，多使用 <code>RelativeLayout</code> 和 <code>ConstraintLayout</code> 来代替 <code>LinearLayout</code></li><li>使用抽象布局标签<ol><li><code>include</code></li><li><code>merge</code> : 防止因为使用 <code>include</code> 导致布局多了一个层级</li><li><code>viewstub</code> : 是一个轻量级的 <code>view</code> ，隐藏的且没有尺寸的 <code>view</code></li></ol></li></ul></li><li>利用 <code>Android Lint</code> 工具来寻找可能优化布局的层次<ul><li>使用组合控件：包含了一个 <code>ImageView</code> 和 一个 <code>TextView</code> 的控件的<code>LinearLayout</code> 如果能够作为一个组合控件使用的话，将会被更有效的处理</li><li>合并作为根节点的帧布局（<code>FrameLayout</code> ）：如果一个 帧布局 是布局文件的根节点，而且它没有背景或者 <code>padding</code> 等属性，更有效的方式是使用 <code>merge</code> 标签来替换该 <code>FrameLayout</code> 标签</li><li>无用的子节点，通常来说如果一个<code>Layout</code> 没有子<code>view</code> 或者背景，那么该<code>layout</code> 可以被移除（因为此时其是处于 <code>invisible</code> 状态）</li><li>无用的父节点：当一个父 <code>view</code> 拥有子<code>view</code> ，但是其没有兄弟节点，且该视图不是 <code>ScrollView</code> 或者 根节点，且其没有背景图片，那么这个父<code>view</code> 是可以被移除的，，移除之后，该父视图的所有子视图可以直接迁移至之前父<code>view</code> 的视图层次</li><li>过深的布局层次，内嵌过多层次的布局总是低效的，使用一些扁平的布局控件，例如 <code>RelativeLayout</code> <code>GridLayout</code> 来改善布局层次，系统默认最大布局深度为10</li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面试题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> 面试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Android ANR</title>
+      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20ANR/"/>
+      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20ANR/</url>
+      
+        <content type="html"><![CDATA[<p><code>ANR</code> (<code>Android Not Responding</code>)</p><p>造成 <code>ANR</code> 的原因：</p><ul><li><code>InputDispatching Timeout</code> ：5s内无法响应触摸事件或者键盘输入事件</li><li><code>BroadcastQueue Timeout</code> ：在执行前台广播的 <code>onReceive()</code> 函数时10s没有处理完成，后台为60s</li><li><code>Service Timeout</code> ： 前台服务 20s 内，后台服务在 200s 内没有执行完毕</li><li><code>ContentProvider Timeout</code> ： <code>ContentProvider</code> 的 <code>publish</code> 在 10s 内没有进行完成</li></ul><p>避免方法：尽量避免在主线程中执行耗时操作</p><p>造成 <code>ANR</code> 的原因以及解决方法</p><ol><li><p>主线程阻塞或主线程读取数据</p><blockquote><p>尽量避免死锁的出现，使用子线程来处理耗时任务或阻塞任务，尽量避免在主线程 <code>qurey provider</code> 、不滥用 <code>SharedPreference</code></p></blockquote></li><li><p><code>CPU</code> 满载，<code>I/O</code>阻塞</p><blockquote><p>文件读写、数据库操作放在子线程异步操作</p></blockquote></li><li><p>内存不足</p><blockquote><p>在 <code>manifest</code> 中的 <code>application</code> 标签下设置 <code>android:largeHeap=&quot;true&quot;</code> ，以此来增大 App 可用内存。根本解决方法：防止内存泄漏，优化内存使用</p></blockquote></li><li><p>各大组件 <code>ANR</code></p><blockquote><p>各个组件生命周期中也应避免耗时操作，<code>BroadcastReceiver</code> 的 <code>onReceive</code> 、后台 <code>Service</code>和<code>ContentProvider</code>也避免执行耗时任务</p></blockquote></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面试题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> 面试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>RecyclerView 和 ListView 的区别</title>
+      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/RecyclerView%20%E5%92%8C%20ListView%20%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/RecyclerView%20%E5%92%8C%20ListView%20%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      
+        <content type="html"><![CDATA[<h4 id="RecyclerView-和-ListView-的区别"><a href="#RecyclerView-和-ListView-的区别" class="headerlink" title="RecyclerView 和 ListView 的区别"></a><code>RecyclerView</code> 和 <code>ListView</code> 的区别</h4><h5 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a><code>RecyclerView</code></h5><p><code>recyclerView</code> 根据 <code>postion</code> 获取到的是 <code>viewholder</code></p><p><code>listView</code> 根据 <code>postion</code> 获取到的是 <code>view</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面试题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> 面试 </tag>
+            
+            <tag> RecyclerView </tag>
+            
+            <tag> ListView </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>内存泄漏和内存溢出</title>
+      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%92%8C%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/"/>
+      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%92%8C%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/</url>
+      
+        <content type="html"><![CDATA[<h4 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h4><p><code>memory leak</code></p><blockquote><p>有些对象只有有限的生命周期，如果该对象到达生命周期的终点，却还被其他对象引用着，这就导致了内存泄漏，随着泄漏的积累，导致ac的内存被消耗完，最终导致 OOM，例如当 <code>activity</code> 调用了 <code>onDestory()</code> 之后，该 <code>activity</code>的 <code>view</code> 树和 相关的<code>bitmap</code>都应该被回收，但是如果此时又个线程仍然持有该<code>activity</code> 的引用，该<code>activity</code>的内存就不会被回收，这最终将导致 <code>OOM</code></p></blockquote><h5 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h5><blockquote><p>根本原因：当和系统申请内存的时候，系统分配了内存，但是当该内存不再被需要的时候，却不将此内存还给系统，导致系统无法分配该内存，这就导致了内存泄漏(<code>Memory Leak</code>)</p></blockquote><ol><li><p>资源对象没有被正常关闭：<code>inputstream.close()</code> 或 <code>outputstream.close()</code> 、<code>cursor</code> 、 <code>file</code> 、<code>bitmap</code> 等资源，使用完没有正常调用 <code>close</code> 或 <code>recycle</code> ,<code>SQLiteCursor</code> 当数据量大的时候也容易泄漏</p></li><li><p>使用 adapter 没有使用系统缓存和 <code>viewholder</code></p></li><li><p>当 <code>bitmap</code> 不再使用的时候没有调用 <code>bitmap.recycle()</code></p></li><li><p>使用 <code>applicationContext</code> 代替 <code>ActivityContext</code> </p><blockquote><p>不要让生命周期长于 <code>activity</code> 的对象持有到 <code>activity</code>的引用</p></blockquote></li><li><p>广播注册之后没有及时取消</p></li><li><p>Handler 应该声明为静态对象，并用弱引用来保存外部 <code>activity</code>的引用</p></li></ol><h4 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h4><p><code>OutOfMemory（OOM）</code></p><blockquote><p>当前对象所需的内存大小已超过可分配的内存大小</p><ol><li>Bitmap 过大</li><li>无需的引用没有被释放</li><li>资源对象没有被正常关闭</li></ol></blockquote><h5 id="原因：-1"><a href="#原因：-1" class="headerlink" title="原因："></a>原因：</h5><blockquote><ol><li><p>内存泄漏所导致</p><blockquote><p> 代码错误：长期保持某些资源(Context)的占有，导致资源无法正常被 GC 回收，这就导致了内存泄漏</p><p>一个 service 持有了这个ac的引用，然后，这个ac调用了finish ，然后因为service还持有这个ac的引用，导致这个ac无法被正常回收</p></blockquote></li><li><p>占用内存较多的对象</p><blockquote><p><code>Android</code> Bitmap 图片过大，导致oom</p></blockquote></li></ol></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面试题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> 内存泄漏 </tag>
+            
+            <tag> 内存溢出 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Android 事件分发机制</title>
+      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/"/>
+      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Android-事件分发机制"><a href="#Android-事件分发机制" class="headerlink" title="Android 事件分发机制"></a><code>Android</code> 事件分发机制</h3><p>事件的开始是从 <code>ACTION_DOWN</code> 开始</p><p>事件分发</p><p>从 <code>activity</code> 中 <code>dispatchTouchEvent</code> 开始，只有返回 <code>onTouchEvent(ev)</code> 的时候，ac 才会将事件分发下去，如果 返回 <code>true  &amp; false</code> 都将事件拦截下来，交由 <code>activity</code> 自己处理</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/bf5adb5cfa3f9ad00b564686c823f722/0" alt="img"></p><h4 id="ViewGroup-中的-dispatchTouchEvent-方法"><a href="#ViewGroup-中的-dispatchTouchEvent-方法" class="headerlink" title="ViewGroup 中的 dispatchTouchEvent 方法"></a><code>ViewGroup</code> 中的 <code>dispatchTouchEvent</code> 方法</h4><blockquote><p>图中流程表示 <code>viewgroup</code> 是否自己处理事件</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/2261a5c4b716c8613419aec242fb18c7/0" alt="img"></p></blockquote><h5 id="Activity-的事件分发示意图"><a href="#Activity-的事件分发示意图" class="headerlink" title="Activity 的事件分发示意图"></a><code>Activity</code> 的事件分发示意图</h5><p><img src="https://qqadapt.qpic.cn/txdocpic/0/227e736c77a3e59297f4da5ac6aa805b/0" alt="img"></p><p><code>ViewGroup</code> 的事件分发示意图</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/fba254359ca80443e0f0572e7450012c/0" alt="img"></p><p><code>View</code>的事件分发示意图</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/607c5c1f51cda2c444f8059b3f1b60db/0" alt="img"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面试题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> 面试 </tag>
+            
+            <tag> 事件分发机制 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
