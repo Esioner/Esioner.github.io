@@ -35,11 +35,11 @@
     
     
     <entry>
-      <title>如何把 Activity 实例放到一个泛型为 String 的 ArrayList 中去</title>
-      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Q%EF%BC%9A%E5%A6%82%E4%BD%95%E6%8A%8A%20Activity%20%E6%94%BE%E5%88%B0%20ListString%20mList%20=%20new%20ArrayList();%20%E4%B8%AD%E5%8E%BB/"/>
-      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Q%EF%BC%9A%E5%A6%82%E4%BD%95%E6%8A%8A%20Activity%20%E6%94%BE%E5%88%B0%20ListString%20mList%20=%20new%20ArrayList();%20%E4%B8%AD%E5%8E%BB/</url>
+      <title>RecyclerView 和 ListView 的区别</title>
+      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/RecyclerView%20%E5%92%8C%20ListView%20%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/RecyclerView%20%E5%92%8C%20ListView%20%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
       
-        <content type="html"><![CDATA[<p>Q：如何把 <code>Activity</code> 实例放到一个泛型为 <code>String</code> 的 <code>ArrayList</code> 中去</p><blockquote><p>这一个题目考察的是泛型擦除的概念</p></blockquote><p>方法一：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用反射的方式</span></span><br><span class="line"><span class="keyword">private</span> List&lt;String&gt; strList;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">putActivity2List</span><span class="params">()</span> </span>&#123;</span><br><span class="line">strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">strList.add(<span class="string">"你好"</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//获取所有不包括基类的成员变量</span></span><br><span class="line">Field strField = getClass().getDeclaredField(<span class="string">"strList"</span>);</span><br><span class="line">strField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">List list = (List) strField.get(<span class="keyword">this</span>);<span class="comment">//通过反射拿到 strList</span></span><br><span class="line">list.add(<span class="keyword">this</span>);</span><br><span class="line">Log.d(TAG, <span class="string">"onCreate: "</span> + list.size());</span><br><span class="line">&#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">Log.d(TAG, <span class="string">"onCreate: strList.size = "</span> + strList.size());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>方法二：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">List&lt;Activity&gt; acList = strList;</span><br><span class="line">acList.add(activity);</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h4 id="RecyclerView-和-ListView-的区别"><a href="#RecyclerView-和-ListView-的区别" class="headerlink" title="RecyclerView 和 ListView 的区别"></a><code>RecyclerView</code> 和 <code>ListView</code> 的区别</h4><h5 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a><code>RecyclerView</code></h5><p><code>recyclerView</code> 根据 <code>postion</code> 获取到的是 <code>viewholder</code></p><p><code>listView</code> 根据 <code>postion</code> 获取到的是 <code>view</code></p>]]></content>
       
       
       <categories>
@@ -54,6 +54,10 @@
             <tag> Android </tag>
             
             <tag> 面试 </tag>
+            
+            <tag> RecyclerView </tag>
+            
+            <tag> ListView </tag>
             
         </tags>
       
@@ -62,11 +66,11 @@
     
     
     <entry>
-      <title>Android 优化布局的几种方法</title>
-      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</url>
+      <title>Android 事件分发机制</title>
+      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/"/>
+      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
       
-        <content type="html"><![CDATA[<h4 id="优化布局的方法"><a href="#优化布局的方法" class="headerlink" title="优化布局的方法"></a>优化布局的方法</h4><ol><li>优化布局<ul><li>减少布局嵌套，多使用 <code>RelativeLayout</code> 和 <code>ConstraintLayout</code> 来代替 <code>LinearLayout</code></li><li>使用抽象布局标签<ol><li><code>include</code></li><li><code>merge</code> : 防止因为使用 <code>include</code> 导致布局多了一个层级</li><li><code>viewstub</code> : 是一个轻量级的 <code>view</code> ，隐藏的且没有尺寸的 <code>view</code></li></ol></li></ul></li><li>利用 <code>Android Lint</code> 工具来寻找可能优化布局的层次<ul><li>使用组合控件：包含了一个 <code>ImageView</code> 和 一个 <code>TextView</code> 的控件的<code>LinearLayout</code> 如果能够作为一个组合控件使用的话，将会被更有效的处理</li><li>合并作为根节点的帧布局（<code>FrameLayout</code> ）：如果一个 帧布局 是布局文件的根节点，而且它没有背景或者 <code>padding</code> 等属性，更有效的方式是使用 <code>merge</code> 标签来替换该 <code>FrameLayout</code> 标签</li><li>无用的子节点，通常来说如果一个<code>Layout</code> 没有子<code>view</code> 或者背景，那么该<code>layout</code> 可以被移除（因为此时其是处于 <code>invisible</code> 状态）</li><li>无用的父节点：当一个父 <code>view</code> 拥有子<code>view</code> ，但是其没有兄弟节点，且该视图不是 <code>ScrollView</code> 或者 根节点，且其没有背景图片，那么这个父<code>view</code> 是可以被移除的，，移除之后，该父视图的所有子视图可以直接迁移至之前父<code>view</code> 的视图层次</li><li>过深的布局层次，内嵌过多层次的布局总是低效的，使用一些扁平的布局控件，例如 <code>RelativeLayout</code> <code>GridLayout</code> 来改善布局层次，系统默认最大布局深度为10</li></ul></li></ol>]]></content>
+        <content type="html"><![CDATA[<h3 id="Android-事件分发机制"><a href="#Android-事件分发机制" class="headerlink" title="Android 事件分发机制"></a><code>Android</code> 事件分发机制</h3><p>事件的开始是从 <code>ACTION_DOWN</code> 开始</p><p>事件分发</p><p>从 <code>activity</code> 中 <code>dispatchTouchEvent</code> 开始，只有返回 <code>onTouchEvent(ev)</code> 的时候，ac 才会将事件分发下去，如果 返回 <code>true  &amp; false</code> 都将事件拦截下来，交由 <code>activity</code> 自己处理</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/bf5adb5cfa3f9ad00b564686c823f722/0" alt="img"></p><h4 id="ViewGroup-中的-dispatchTouchEvent-方法"><a href="#ViewGroup-中的-dispatchTouchEvent-方法" class="headerlink" title="ViewGroup 中的 dispatchTouchEvent 方法"></a><code>ViewGroup</code> 中的 <code>dispatchTouchEvent</code> 方法</h4><blockquote><p>图中流程表示 <code>viewgroup</code> 是否自己处理事件</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/2261a5c4b716c8613419aec242fb18c7/0" alt="img"></p></blockquote><h5 id="Activity-的事件分发示意图"><a href="#Activity-的事件分发示意图" class="headerlink" title="Activity 的事件分发示意图"></a><code>Activity</code> 的事件分发示意图</h5><p><img src="https://qqadapt.qpic.cn/txdocpic/0/227e736c77a3e59297f4da5ac6aa805b/0" alt="img"></p><p><code>ViewGroup</code> 的事件分发示意图</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/fba254359ca80443e0f0572e7450012c/0" alt="img"></p><p><code>View</code>的事件分发示意图</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/607c5c1f51cda2c444f8059b3f1b60db/0" alt="img"></p>]]></content>
       
       
       <categories>
@@ -81,6 +85,8 @@
             <tag> Android </tag>
             
             <tag> 面试 </tag>
+            
+            <tag> 事件分发机制 </tag>
             
         </tags>
       
@@ -116,11 +122,11 @@
     
     
     <entry>
-      <title>RecyclerView 和 ListView 的区别</title>
-      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/RecyclerView%20%E5%92%8C%20ListView%20%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/RecyclerView%20%E5%92%8C%20ListView%20%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      <title>如何把 Activity 实例放到一个泛型为 String 的 ArrayList 中去</title>
+      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Q%EF%BC%9A%E5%A6%82%E4%BD%95%E6%8A%8A%20Activity%20%E6%94%BE%E5%88%B0%20ListString%20mList%20=%20new%20ArrayList();%20%E4%B8%AD%E5%8E%BB/"/>
+      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Q%EF%BC%9A%E5%A6%82%E4%BD%95%E6%8A%8A%20Activity%20%E6%94%BE%E5%88%B0%20ListString%20mList%20=%20new%20ArrayList();%20%E4%B8%AD%E5%8E%BB/</url>
       
-        <content type="html"><![CDATA[<h4 id="RecyclerView-和-ListView-的区别"><a href="#RecyclerView-和-ListView-的区别" class="headerlink" title="RecyclerView 和 ListView 的区别"></a><code>RecyclerView</code> 和 <code>ListView</code> 的区别</h4><h5 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a><code>RecyclerView</code></h5><p><code>recyclerView</code> 根据 <code>postion</code> 获取到的是 <code>viewholder</code></p><p><code>listView</code> 根据 <code>postion</code> 获取到的是 <code>view</code></p>]]></content>
+        <content type="html"><![CDATA[<p>Q：如何把 <code>Activity</code> 实例放到一个泛型为 <code>String</code> 的 <code>ArrayList</code> 中去</p><blockquote><p>这一个题目考察的是泛型擦除的概念</p></blockquote><p>方法一：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用反射的方式</span></span><br><span class="line"><span class="keyword">private</span> List&lt;String&gt; strList;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">putActivity2List</span><span class="params">()</span> </span>&#123;</span><br><span class="line">strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">strList.add(<span class="string">"你好"</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//获取所有不包括基类的成员变量</span></span><br><span class="line">Field strField = getClass().getDeclaredField(<span class="string">"strList"</span>);</span><br><span class="line">strField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">List list = (List) strField.get(<span class="keyword">this</span>);<span class="comment">//通过反射拿到 strList</span></span><br><span class="line">list.add(<span class="keyword">this</span>);</span><br><span class="line">Log.d(TAG, <span class="string">"onCreate: "</span> + list.size());</span><br><span class="line">&#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">Log.d(TAG, <span class="string">"onCreate: strList.size = "</span> + strList.size());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>方法二：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">List&lt;Activity&gt; acList = strList;</span><br><span class="line">acList.add(activity);</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -135,10 +141,6 @@
             <tag> Android </tag>
             
             <tag> 面试 </tag>
-            
-            <tag> RecyclerView </tag>
-            
-            <tag> ListView </tag>
             
         </tags>
       
@@ -178,11 +180,11 @@
     
     
     <entry>
-      <title>Android 事件分发机制</title>
-      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/"/>
-      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
+      <title>Android 优化布局的几种方法</title>
+      <link href="/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+      <url>/2019/04/23/%E9%9D%A2%E8%AF%95%E9%A2%98/Android%20%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</url>
       
-        <content type="html"><![CDATA[<h3 id="Android-事件分发机制"><a href="#Android-事件分发机制" class="headerlink" title="Android 事件分发机制"></a><code>Android</code> 事件分发机制</h3><p>事件的开始是从 <code>ACTION_DOWN</code> 开始</p><p>事件分发</p><p>从 <code>activity</code> 中 <code>dispatchTouchEvent</code> 开始，只有返回 <code>onTouchEvent(ev)</code> 的时候，ac 才会将事件分发下去，如果 返回 <code>true  &amp; false</code> 都将事件拦截下来，交由 <code>activity</code> 自己处理</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/bf5adb5cfa3f9ad00b564686c823f722/0" alt="img"></p><h4 id="ViewGroup-中的-dispatchTouchEvent-方法"><a href="#ViewGroup-中的-dispatchTouchEvent-方法" class="headerlink" title="ViewGroup 中的 dispatchTouchEvent 方法"></a><code>ViewGroup</code> 中的 <code>dispatchTouchEvent</code> 方法</h4><blockquote><p>图中流程表示 <code>viewgroup</code> 是否自己处理事件</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/2261a5c4b716c8613419aec242fb18c7/0" alt="img"></p></blockquote><h5 id="Activity-的事件分发示意图"><a href="#Activity-的事件分发示意图" class="headerlink" title="Activity 的事件分发示意图"></a><code>Activity</code> 的事件分发示意图</h5><p><img src="https://qqadapt.qpic.cn/txdocpic/0/227e736c77a3e59297f4da5ac6aa805b/0" alt="img"></p><p><code>ViewGroup</code> 的事件分发示意图</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/fba254359ca80443e0f0572e7450012c/0" alt="img"></p><p><code>View</code>的事件分发示意图</p><p><img src="https://qqadapt.qpic.cn/txdocpic/0/607c5c1f51cda2c444f8059b3f1b60db/0" alt="img"></p>]]></content>
+        <content type="html"><![CDATA[<h4 id="优化布局的方法"><a href="#优化布局的方法" class="headerlink" title="优化布局的方法"></a>优化布局的方法</h4><ol><li>优化布局<ul><li>减少布局嵌套，多使用 <code>RelativeLayout</code> 和 <code>ConstraintLayout</code> 来代替 <code>LinearLayout</code></li><li>使用抽象布局标签<ol><li><code>include</code></li><li><code>merge</code> : 防止因为使用 <code>include</code> 导致布局多了一个层级</li><li><code>viewstub</code> : 是一个轻量级的 <code>view</code> ，隐藏的且没有尺寸的 <code>view</code></li></ol></li></ul></li><li>利用 <code>Android Lint</code> 工具来寻找可能优化布局的层次<ul><li>使用组合控件：包含了一个 <code>ImageView</code> 和 一个 <code>TextView</code> 的控件的<code>LinearLayout</code> 如果能够作为一个组合控件使用的话，将会被更有效的处理</li><li>合并作为根节点的帧布局（<code>FrameLayout</code> ）：如果一个 帧布局 是布局文件的根节点，而且它没有背景或者 <code>padding</code> 等属性，更有效的方式是使用 <code>merge</code> 标签来替换该 <code>FrameLayout</code> 标签</li><li>无用的子节点，通常来说如果一个<code>Layout</code> 没有子<code>view</code> 或者背景，那么该<code>layout</code> 可以被移除（因为此时其是处于 <code>invisible</code> 状态）</li><li>无用的父节点：当一个父 <code>view</code> 拥有子<code>view</code> ，但是其没有兄弟节点，且该视图不是 <code>ScrollView</code> 或者 根节点，且其没有背景图片，那么这个父<code>view</code> 是可以被移除的，，移除之后，该父视图的所有子视图可以直接迁移至之前父<code>view</code> 的视图层次</li><li>过深的布局层次，内嵌过多层次的布局总是低效的，使用一些扁平的布局控件，例如 <code>RelativeLayout</code> <code>GridLayout</code> 来改善布局层次，系统默认最大布局深度为10</li></ul></li></ol>]]></content>
       
       
       <categories>
@@ -197,8 +199,6 @@
             <tag> Android </tag>
             
             <tag> 面试 </tag>
-            
-            <tag> 事件分发机制 </tag>
             
         </tags>
       
